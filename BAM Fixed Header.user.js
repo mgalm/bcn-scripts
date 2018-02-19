@@ -9,6 +9,7 @@
 // @copyright   2017, Marius Galm
 // @license		MIT
 // @grant       none
+// @icon        https://www.bluecatnetworks.com/wp-content/themes/bluecat/assets/img/icons/favicon.ico
 // ==/UserScript==
 var pageElements = document.childNodes;
 if (pageElements !== null) {
