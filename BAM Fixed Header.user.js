@@ -7,7 +7,7 @@
 // @version     3
 // @author      Marius Galm
 // @copyright   2017, Marius Galm
-// @license		MIT
+// @license     MIT
 // @grant       none
 // @icon        https://www.bluecatnetworks.com/wp-content/themes/bluecat/assets/img/icons/favicon.ico
 // ==/UserScript==
