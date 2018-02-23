@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Add option for Page Size of 256 in BlueCat Address Manager
 // @include     */app*
-// @version     2
+// @version     3
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -12,18 +12,31 @@
 // ==/UserScript==
 
 if (document.readyState === "interactive" ) {
-    var sel = document.getElementById("PropertySelection");
-    if(sel){
-        var option = document.createElement("option");
-        option.text = "256";
-        option.value = "256";
-        sel.appendChild(option);
+    // where will we add
+    var sels = document.getElementsByTagName("select");
+    var selects = [];
+    var leng = sels.length;
+    for ( var i = 0 ; i < sels.length ; i++ ) {
+        // only into PageSize objects
+        if (sels[i].hasAttribute("onchange")) {
+            if (sels[i].getAttribute("onchange").includes("performChangePageSize")) {
+                selects.push(sels[i]);
+            }
+        }
     }
-    var sel0 = document.getElementById("PropertySelection_0");
-    if(sel0){
-        var option = document.createElement("option");
-        option.text = "256";
-        option.value = "256";
-        sel0.appendChild(option);
+    // what is pushed in
+    var string = "256,512,1024";
+    var array = string.split(",");
+    // do push
+    for ( var j = 0 ; j < selects.length ; j++ ) {
+        if(selects[j]){
+            for ( var k = 0 ; k < array.length ; k++ ) {
+                var val = array[k];
+                var option = document.createElement("option");
+                option.text = val;
+                option.value = val;
+                selects[j].appendChild(option);
+            }
+        }
     }
 }
