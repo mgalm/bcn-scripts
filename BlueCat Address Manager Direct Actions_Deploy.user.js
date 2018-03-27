@@ -4,7 +4,7 @@
 // @description Add direct buttons for Deploy Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     2
+// @version     3
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -27,6 +27,15 @@ if (document.readyState === "interactive" ) {
             y.innerHTML='<div class="separator"></div>';
             var z = tR.insertCell(-1);
             z.innerHTML='<span id="deployStatusButton" class="title"><a style="color:inherit; text-decoration: none;" href="/app?component=%24ValueObjectFormTable_14.%24ComboButtonBar.%24ComboButton.direct&page=ConfigurationPage&service=direct&session=T&sp=Spage%3DDeploymentStatus&sp=Spage%3DDeploymentStatus"><img src="/images/icons/small/flash_question.gif" border="0">&nbsp;<span class="title-center"><b style="vertical-align: super;">Deployment Status</b></a></span>';
+        }
+    }
+	if (/ Page: ServerPage /.test(page)) {
+        var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
+        if (! /Details/.test(subtab.innerHTML.trim())) {
+            var actions = document.getElementsByClassName('action-items')[0];
+            var tBody = actions.getElementsByTagName('tbody')[0];
+            var w = tBody.insertRow(-1);
+            w.innerHTML='<tr id="For_Deploy"><td class="action-item"><div id="action-item" class="with-description-with-icon"><a href="javascript:remoteSubmitLink( document.getElementById( \'form\' ), \'SDeploy\' );"><div class="selection " onmouseover="onActionItemOver(this, event);" onmouseout="onActionItemOut(this, event);" onclick="onActionItemClick(this, event);"><table class="action-item-selection" cellspacing="0" cellpadding="0"><tbody><tr><td class="icon"><div class="active"><img src="/images/icons/small/flash.gif" border="0"></div></td><td class="action"><div class="active"><div class="action-title">Deploy</div><div class="action-description">Deploy this server</div></div></td></tr></tbody></table></div></a></div></td></tr>';
         }
     }
     if (/ Page: IP4NetworkPage /.test(page)) {
