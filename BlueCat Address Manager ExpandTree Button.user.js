@@ -9,7 +9,7 @@
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license		MIT
-// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-300x300.png
+// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-50x50.png
 // ==/UserScript==
 
 // do when there are container with class "TreeExpandClosed"

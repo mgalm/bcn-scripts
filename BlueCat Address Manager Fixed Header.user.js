@@ -9,7 +9,7 @@
 // @copyright   2018, Marius Galm
 // @license     MIT
 // @grant       none
-// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-300x300.png
+// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-50x50.png
 // ==/UserScript==
 var pageElements = document.childNodes;
 if (pageElements !== null) {
