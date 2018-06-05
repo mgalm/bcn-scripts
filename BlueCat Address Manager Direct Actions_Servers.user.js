@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     1
+// @version     2
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
