@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     2
+// @version     3
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -48,11 +48,13 @@ if (document.readyState === "interactive" ) {
                     var name = namecell.innerText.trim();
                     var managed = row.cells[header.managed].innerText.trim();
                     var profile = row.cells[header.profile].innerText.trim();
+                    var isCluster = false;
                     var image = namecell.getElementsByTagName('img');
                     if (image !== undefined) {
                         // odd, shouldn't happen
                         if (image[0].src.indexOf("cluster") > -1) {
                             var cluster = 'Found Cluster "'+name+'" as Managed: "'+managed+'" with Profile "'+profile+'"';
+                            isCluster = true;
                             //console.log(cluster);
                         } else {
                             var server = 'Found Server "'+name+'" as Managed: "'+managed+'" with Profile "'+profile+'"';
@@ -71,7 +73,13 @@ if (document.readyState === "interactive" ) {
                                 // console.log(" + Adding Buttons")
                                 // edit button
                                 var x = tr.insertCell(-1);
-                                var editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
+                                var editlink = "";
+                                if (isCluster) {
+                                    // special Link for clusters (why? no idea -> the other link let's you set the hostname :-D )
+                                    editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditXHA&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
+                                }else {
+                                    editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
+                                }
                                 // more room between the name and the buttons
                                 x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                                 // view logs button
