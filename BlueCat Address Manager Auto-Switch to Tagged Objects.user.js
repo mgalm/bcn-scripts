@@ -9,7 +9,7 @@
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
-// @icon        https://www.bluecatnetworks.com/wp-content/themes/bluecat/assets/img/icons/favicon.ico
+// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-300x300.png
 // ==/UserScript==
 
 // Exclude Pattern will prevent endless loop :-)

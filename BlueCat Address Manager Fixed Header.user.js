@@ -6,10 +6,10 @@
 // @require     http://code.jquery.com/jquery-latest.js
 // @version     3
 // @author      Marius Galm
-// @copyright   2017, Marius Galm
+// @copyright   2018, Marius Galm
 // @license     MIT
 // @grant       none
-// @icon        https://www.bluecatnetworks.com/wp-content/themes/bluecat/assets/img/icons/favicon.ico
+// @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-300x300.png
 // ==/UserScript==
 var pageElements = document.childNodes;
 if (pageElements !== null) {
