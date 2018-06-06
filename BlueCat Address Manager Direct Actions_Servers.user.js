@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     4
+// @version     5
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -62,7 +62,7 @@ if (document.readyState === "interactive" ) {
                         }
                         // only for managed BDDS
                         if (managed === "Yes") {
-                            if (profile.startsWith("BlueCat DNS")) {
+                            if (profile.startsWith("BlueCat DNS")||profile.startsWith("Adonis")) {
                                 // get Server ID from link
                                 var link = namecell.getElementsByTagName("a")[0].href;
                                 var rest = link.split("SingleServer%3A")[1];
