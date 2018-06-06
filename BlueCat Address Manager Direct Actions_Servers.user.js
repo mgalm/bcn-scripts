@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     3
+// @version     4
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -81,15 +81,15 @@ if (document.readyState === "interactive" ) {
                                     editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
                                 }
                                 // more room between the name and the buttons
-                                x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img src="/images/icons/small/document_edit.gif" border="0"></a></td>';
+                                x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                                 // view logs button
                                 var y = tr.insertCell(-1);
                                 var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
-                                y.innerHTML='<td>&nbsp;<a href="'+loglink+'"><img src="/images/icons/small/server_view.gif" border="0"></a></td>';
+                                y.innerHTML='<td>&nbsp;<a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                                 // service config button
                                 var z = tr.insertCell(-1);
                                 var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
-                                z.innerHTML='<td>&nbsp;<a href="'+conflink+'"><img src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
+                                z.innerHTML='<td>&nbsp;<a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
                             }
                         }
                     }
