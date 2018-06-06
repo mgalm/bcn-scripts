@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     5
+// @version     6
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -19,6 +19,7 @@ if (document.readyState === "interactive" ) {
             // go through the h
             var outertable = document.getElementById("outerTable");
             var header = new Array();
+            var spanheaders = 0;
             for (var i = 0, row; row = outertable.rows[i]; i++) {
                 // process header
                 if (i === 0) {
@@ -26,6 +27,16 @@ if (document.readyState === "interactive" ) {
                     //rows would be accessed using the "row" variable assigned in the for loop
                     for (var j = 0, col; col = row.cells[j]; j++) {
                         //iterate through columns
+                        //check if the column td has an id to check for
+                        if (col.id != null) {
+                            // add 1 to spanheaders to get the correct fields later
+                            if (col.id.startsWith("spanHeader")) {
+                                // found a span header substrace one more for future fields
+                                spanheaders = spanheaders + 1;
+                                //console.log("spanHeader count now: "+spanheaders);
+                                continue;
+                            }
+                        }
                         // get first element of header-text content
                         var text = col.getElementsByClassName("header-text")[0];
                         if (text !== undefined) {
@@ -34,9 +45,11 @@ if (document.readyState === "interactive" ) {
                                 if (trimmed === "Name") {
                                     header.name = j;
                                 } else if (trimmed === "Managed") {
-                                    header.managed = j-1;
+                                    //console.log("normal cound would be: "+j+" but we need to substrace "+spanheaders+" for the span headers")
+                                    header.managed = j-spanheaders;
                                 } else if (trimmed === "Profile") {
-                                    header.profile = j-1;
+                                    //console.log("normal cound would be: "+j+" but we need to substrace "+spanheaders+" for the span headers")
+                                    header.profile = j-spanheaders;
                                 }
                             }
                         }
