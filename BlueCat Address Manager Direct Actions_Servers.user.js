@@ -98,11 +98,11 @@ if (document.readyState === "interactive" ) {
                                 // view logs button
                                 var y = tr.insertCell(-1);
                                 var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
-                                y.innerHTML='<td>&nbsp;<a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
+                                y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                                 // service config button
                                 var z = tr.insertCell(-1);
                                 var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
-                                z.innerHTML='<td>&nbsp;<a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
+                                z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
                             }
                         }
                     }
