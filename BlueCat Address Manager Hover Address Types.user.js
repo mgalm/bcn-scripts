@@ -4,7 +4,7 @@
 // @description Modify all address type images to show the type in text on hover over in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     1
+// @version     2
 // @grant       none
 // @copyright   2018, Marius Galm
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
@@ -33,11 +33,11 @@ if (document.readyState === "interactive" ) {
             } else if (image.src.indexOf("pawn_glass_green_new.gif") > -1) {
                 image.title = "DHCP Reserved";
             } else if (image.src.indexOf("pawn_glass_white.gif") > -1) {
-                image.title = "Free";
+                image.title = "Unassigned";
             } else if (image.src.indexOf("pawn_glass_white_exclude.gif") > -1) {
                 image.title = "DHCP Exclude";
             } else if (image.src.indexOf("pawn_glass_white_new.gif") > -1) {
-                image.title = "DHCP Range";
+                image.title = "Unassigned (DHCP)";
             }
         }
         //console.log(ins[i]);
