@@ -4,7 +4,7 @@
 // @description Add direct buttons for Deploy Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     3
+// @version     4
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -12,6 +12,18 @@
 // ==/UserScript==
 
 if (document.readyState === "interactive" ) {
+	// always add deployment status quick button to toolbar
+    var toolbar = document.getElementsByClassName("ToolBar");
+	if (toolbar !== undefined) {
+		var tRs1 = toolbar[0].getElementsByTagName("tr");
+		if (tRs1 !== undefined) {
+            var tR1 = tRs1[0];
+            var a = tR1.insertCell(0);
+            a.innerHTML = '<td><div class="ToolBarItemSeparator">&nbsp;</div></td>';
+			var b = tR1.insertCell(0);
+			b.innerHTML='<td><a id="link" onclick="ProteusWaitingPage.start();" name="DStatusExtra" class="ToolBarItem" href="/app?component=%24ValueObjectFormTable_14.%24ComboButtonBar.%24ComboButton.direct&page=ConfigurationPage&service=direct&session=T&sp=Spage%3DDeploymentStatus&sp=Spage%3DDeploymentStatus"><img src="/images/icons/small/flash_question.gif" border="0" alt="Deployment Status" title="Deployment Status"></a></td>';
+		}
+	}
     var page = document.childNodes[2].nodeValue;
     if (/ Page: ConfigurationPage /.test(page)) {
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
