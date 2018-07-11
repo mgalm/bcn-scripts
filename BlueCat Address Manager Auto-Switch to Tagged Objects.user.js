@@ -45,7 +45,7 @@ if (document.readyState === "interactive" ) {
                 // Tree View
             } else if (document.getElementsByClassName("TreeNode").length === 0) {
                 getNodes();
-                console.log(document.getElementsByClassName("TreeNode").length);
+                //console.log(document.getElementsByClassName("TreeNode").length);
                 //document.getElementById("contextTabLink_1").click();
             }
         }
