@@ -96,7 +96,7 @@ if (document.readyState === "interactive" ) {
     $("#outerTable tr td").not(':first').hover(
         function () {
             var list = $(this)[0].classList;
-            if (list.contains("skinImage")||list.contains("percent-bar-used")||list.contains("percent-bar-free")||list.contains("first-selection")) {
+            if (list.contains("skinImage")||list.contains("first-selection")||list.contains("percent-bar-used")||list.contains("percent-bar-free")||list.contains("percent-bar")||list.contains("percent-bar-gateway")||list.contains("percent-bar-dhcp-reserved")||list.contains("percent-bar-static")||list.contains("percent-bar-dhcp-allocated")||list.contains("percent-bar-reserved")) {
                 // list will probably grow
                 //console.log($(this)[0].classList[0]);
             } else {
