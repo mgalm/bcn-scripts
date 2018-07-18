@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Add a copy to clipboard button to table cell while hovering over it in Table View in BlueCat Address Manager
 // @include     */app*
-// @version     1
+// @version     2
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -106,7 +106,13 @@ if (document.readyState === "interactive" ) {
                     //console.log(text2);
                     var match = /\r|\n|^No$|^Yes$/.exec(text2);
                     if (!match) {
-                        $(this)[0].appendChild(img);
+                        if ($(this)[0].scrollWidth > $(this).innerWidth()) {
+                            //Text has over-flown, add before the text (will collide with sCC though
+                            $(this)[0].insertBefore(img,$(this)[0].firstChild);
+                        } else {
+                            // append
+                            $(this)[0].appendChild(img);
+                        }
                         //console.log($(this));
                     }
                 }
