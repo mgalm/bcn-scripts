@@ -19,7 +19,7 @@ if (document.readyState === "interactive" ) {
             // odd, shouldn't happen
             if (image.src.indexOf("pawn_glass_red.gif") > -1) {
 
-                image.title = "Network IP /Broadcast";
+                image.title = "Network IP / Broadcast";
             } else if (image.src.indexOf("pawn_glass_yellow.gif") > -1) {
                 image.title = "Gateway";
             } else if (image.src.indexOf("pawn_glass_blue.gif") > -1) {
