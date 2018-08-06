@@ -4,7 +4,7 @@
 // @description Expand Tree Button for TreeView in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     8
+// @version     9
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -114,7 +114,7 @@ if (document.readyState === "interactive" ) {
                         var lable2 = document.getElementById('collapseButton');
                         lable2.addEventListener("click",() => { collapseLevel(); },false);
                     }
-                }
+				}
             }
         } else if (subtab.innerHTML.trim() == "IPv6" ) {
             // Unsupported for now :D
