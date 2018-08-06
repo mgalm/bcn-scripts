@@ -4,7 +4,7 @@
 // @description Expand Tree Button for TreeView in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     7
+// @version     8
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -25,7 +25,7 @@ function expandLevel() {
         }
         // scroll back to top because the BlueCat interface gets jumpy while expanding
         scroll(0,0);
-		document.getElementById('collapseButton').innerHTML = stripTag(document.getElementById('collapseButton').innerHTML);
+        document.getElementById('collapseButton').innerHTML = stripTag(document.getElementById('collapseButton').innerHTML);
     } else {
         var old = document.getElementById('expandButton').innerHTML;
         document.getElementById('expandButton').innerHTML = "<s>"+old+"</s>";
@@ -45,7 +45,7 @@ function collapseLevel() {
         }
         // scroll back to top because the BlueCat interface gets jumpy while expanding
         scroll(0,0);
-		document.getElementById('expandButton').innerHTML = stripTag(document.getElementById('expandButton').innerHTML);
+        document.getElementById('expandButton').innerHTML = stripTag(document.getElementById('expandButton').innerHTML);
     } else {
         var old = document.getElementById('collapseButton').innerHTML;
         document.getElementById('collapseButton').innerHTML = "<s>"+old+"</s>";
@@ -66,42 +66,100 @@ if (document.readyState === "interactive" ) {
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
         if (subtab.innerHTML.trim() == "IPv4" ) {
             // Add button to first table
-            var topBar = document.getElementsByClassName('value-tree-topToolBar')[0];
-            var comboBar = topBar.getElementsByClassName('combo-button-bar')[0];
-            var tBody = comboBar.getElementsByTagName('tbody')[0];
-            var tR = tBody.getElementsByTagName('tr')[0];
-            var w = tR.insertCell(-1);
-            w.innerHTML='<div class="separator"></div>';
-            var x = tR.insertCell(-1);
-            x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
-            var lable = document.getElementById('expandButton');
-            lable.addEventListener("click",() => { expandLevel(); },false);
-            var y = tR.insertCell(-1);
-            y.innerHTML='<div class="separator"></div>';
-            var z = tR.insertCell(-1);
-            z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
-            var lable2 = document.getElementById('collapseButton');
-            lable2.addEventListener("click",() => { collapseLevel(); },false);
-        } else if (subtab.innerHTML.trim() == "Views" ) {
-            // Add button to first table
-            var topBar = document.getElementsByClassName('value-tree-topToolBar')[0];
-            var comboBar = topBar.getElementsByClassName('combo-button-bar')[0];
-            var tBody = comboBar.getElementsByTagName('tbody')[0];
-            var tR = tBody.getElementsByTagName('tr')[0];
-            var w = tR.insertCell(-1);
-            w.innerHTML='<div class="separator"></div>';
-            var x = tR.insertCell(-1);
-            x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
-            var lable = document.getElementById('expandButton');
-            lable.addEventListener("click",() => { expandLevel(); },false);
-            var y = tR.insertCell(-1);
-            y.innerHTML='<div class="separator"></div>';
-            var z = tR.insertCell(-1);
-            z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
-            var lable2 = document.getElementById('collapseButton');
-            lable2.addEventListener("click",() => { collapseLevel(); },false);
-        } else if (subtab.innerHTML.trim() == "IPv6" ) {
-            // Unsupported for now :D
+            var topBars = document.getElementsByClassName('value-tree-topToolBar');
+            if (( topBars !== undefined ) && (topBars.length > 0)) {
+                var topBar = topBars[0];
+                var comboBars = topBar.getElementsByClassName('combo-button-bar');
+                if ((comboBars !== undefined) && (comboBars.length > 0)) {
+                    var tBody = comboBars.getElementsByTagName('tbody')[0];
+                    var tBody = comboBar.getElementsByTagName('tbody')[0];
+                    var tR = tBody.getElementsByTagName('tr')[0];
+                    var w = tR.insertCell(-1);
+                    w.innerHTML='<div class="separator"></div>';
+                    var x = tR.insertCell(-1);
+                    x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
+                    var lable = document.getElementById('expandButton');
+                    lable.addEventListener("click",() => { expandLevel(); },false);
+                    var y = tR.insertCell(-1);
+                    y.innerHTML='<div class="separator"></div>';
+                    var z = tR.insertCell(-1);
+                    z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
+                    var lable2 = document.getElementById('collapseButton');
+                    lable2.addEventListener("click",() => { collapseLevel(); },false);
+                } else if (subtab.innerHTML.trim() == "Views" ) {
+                    // Add button to first table
+                    var topBars = document.getElementsByClassName('value-tree-topToolBar');
+                    if (( topBars !== undefined ) && (topBars.length > 0)) {
+                        var topBar = topBars[0];
+                        var comboBars = topBar.getElementsByClassName('combo-button-bar');
+                        if ((comboBars !== undefined) && (comboBars.length > 0)) {
+                            var tBody = comboBars.getElementsByTagName('tbody')[0];
+                            var tBody = comboBar.getElementsByTagName('tbody')[0];
+                            var tR = tBody.getElementsByTagName('tr')[0];
+                            var w = tR.insertCell(-1);
+                            w.innerHTML='<div class="separator"></div>';
+                            var x = tR.insertCell(-1);
+                            x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
+                            var lable = document.getElementById('expandButton');
+                            lable.addEventListener("click",() => { expandLevel(); },false);
+                            var y = tR.insertCell(-1);
+                            y.innerHTML='<div class="separator"></div>';
+                            var z = tR.insertCell(-1);
+                            z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
+                            var lable2 = document.getElementById('collapseButton');
+                            lable2.addEventListener("click",() => { collapseLevel(); },false);
+                        }
+                    }
+                } else if (subtab.innerHTML.trim() == "IPv6" ) {
+                    // Unsupported for now :D
+                }
+            } else if (/ Page: GroupList /.test(page)) {
+                // Add button to first table
+                var topBars = document.getElementsByClassName('value-tree-topToolBar');
+                if ((topBars !== undefined) && (topBars.length > 0)) {
+                    var topBar = topBars[0];
+                    var comboBars = topBar.getElementsByClassName('combo-button-bar');
+                    if ((comboBars !== undefined) && (comboBars.length > 0)) {
+                        var tBody = comboBars.getElementsByTagName('tbody')[0];
+                        var tR = tBody.getElementsByTagName('tr')[0];
+                        var w = tR.insertCell(-1);
+                        w.innerHTML='<div class="separator"></div>';
+                        var x = tR.insertCell(-1);
+                        x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
+                        var lable = document.getElementById('expandButton');
+                        lable.addEventListener("click",() => { expandLevel(); },false);
+                        var y = tR.insertCell(-1);
+                        y.innerHTML='<div class="separator"></div>';
+                        var z = tR.insertCell(-1);
+                        z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
+                        var lable2 = document.getElementById('collapseButton');
+                        lable2.addEventListener("click",() => { collapseLevel(); },false);
+                    }
+                }
+            }
+        }
+    } else if (/ Page: TagGroup /.test(page)) {
+        // Add button to first table
+        var topBars = document.getElementsByClassName('value-tree-topToolBar');
+        if (( topBars !== undefined ) && (topBars.length > 0)) {
+            var topBar = topBars[0];
+            var comboBars = topBar.getElementsByClassName('combo-button-bar');
+            if ((comboBars !== undefined) && (comboBars.length > 0)) {
+                var tBody = comboBars.getElementsByTagName('tbody')[0];
+                var tR = tBody.getElementsByTagName('tr')[0];
+                var w = tR.insertCell(-1);
+                w.innerHTML='<div class="separator"></div>';
+                var x = tR.insertCell(-1);
+                x.innerHTML='<span id="expandButton"><b>Expand</b></span>';
+                var lable = document.getElementById('expandButton');
+                lable.addEventListener("click",() => { expandLevel(); },false);
+                var y = tR.insertCell(-1);
+                y.innerHTML='<div class="separator"></div>';
+                var z = tR.insertCell(-1);
+                z.innerHTML='<span id="collapseButton"><s><b>Collapse</b></s></span>';
+                var lable2 = document.getElementById('collapseButton');
+                lable2.addEventListener("click",() => { collapseLevel(); },false);
+            }
         }
     }
 }
