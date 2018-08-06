@@ -3,12 +3,11 @@
 // @namespace   *
 // @description Expand Tree Button for TreeView in BlueCat Address Manager
 // @include     */app*
-// @license		MIT
+// @license     MIT
 // @version     9
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
-// @license		MIT
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
 // ==/UserScript==
 
