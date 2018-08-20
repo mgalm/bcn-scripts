@@ -17,54 +17,28 @@ if (document.readyState === "interactive" ) {
     } else {
         var mainTab = document.getElementsByClassName("tab-bar active")[0];
         if (/IP Space/.test(mainTab.innerHTML.trim())) {
-            document.addEventListener('keypress', function(e) {
-                var x = e.key;
-                // If the pressed keyboard button is "e" or "E" (using caps lock or shift), alert some text and call link
-
-                if (x == "e" || x == "E") {
-                    //console.log("User pressed 'E' key in 'IP Space' - calling edit function via 'direct' Object Id");
-                    var editButton = document.getElementById('direct');
-                    var link = editButton.href;
-                    window.location = link;
-                }
-            });
+            addEventL();
         } else if (/DNS/.test(mainTab.innerHTML.trim())) {
-            document.addEventListener('keypress', function(e) {
-                var x = e.key;
-                // If the pressed keyboard button is "e" or "E" (using caps lock or shift), alert some text and call link
-
-                if (x == "e" || x == "E") {
-                    //console.log("User pressed 'E' key in 'DNS' - calling edit function via 'direct' Object Id");
-                    var editButton = document.getElementById('direct');
-                    var link = editButton.href;
-                    window.location = link;
-                }
-            });
+            addEventL();
         } else if (/Devices/.test(mainTab.innerHTML.trim())) {
-            document.addEventListener('keypress', function(e) {
-                var x = e.key;
-                // If the pressed keyboard button is "e" or "E" (using caps lock or shift), alert some text and call link
-
-                if (x == "e" || x == "E") {
-                    console.log("User pressed 'E' key in 'Devices' - calling edit function via 'direct' Object Id");
-                    var editButton = document.getElementById('direct');
-                    var link = editButton.href;
-                    window.location = link;
-                }
-            });
-
+            addEventL();
         } else if (/Groups/.test(mainTab.innerHTML.trim())) {
-            document.addEventListener('keypress', function(e) {
-                var x = e.key;
-                // If the pressed keyboard button is "e" or "E" (using caps lock or shift), alert some text and call link
-
-                if (x == "e" || x == "E") {
-                    //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
-                    var editButton = document.getElementById('direct');
-                    var link = editButton.href;
-                    window.location = link;
-                }
-            });
+            addEventL();
         }
     }
+}
+
+
+function addEventL() {
+    document.addEventListener('keypress', function(e) {
+        var x = e.key;
+        // If the pressed keyboard button is "e" or "E" (using caps lock or shift), alert some text and call link
+
+        if (x == "e" || x == "E") {
+            //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
+            var editButton = document.getElementById('direct');
+            var link = editButton.href;
+            window.location = link;
+        }
+    });
 }
