@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Add a copy to clipboard button to table cell while hovering over it in Table View in BlueCat Address Manager
 // @include     */app*
-// @version     2
+// @version     3
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -82,7 +82,7 @@ if (document.readyState === "interactive" ) {
     img.id = "copybtn";
     img.src = "/images/icons/small/copy.gif";
     img.border="0";
-    img.style = "display: inline; height: 75%"
+    img.style = "display: inline; height: 75%; padding-top: 2px;";
     img.alt="Copy to clipboard";
     img.title="Copy to clipboard";
     img.addEventListener('click', function () {
@@ -93,6 +93,41 @@ if (document.readyState === "interactive" ) {
     //jQuery fix
     this.$ = this.jQuery = jQuery.noConflict(true);
 
+    // object detail fields
+    $(".detailsPane-fieldValue").hover(
+        function () {
+            //console.log($(this));
+            if ($(this)[0].innerText.trim() !== "") {
+                var text2 = $(this)[0].innerText;
+                // if text doesn't contains newline
+                //console.log(text2);
+                var match = /\r|\n|^No$|^Yes$/.exec(text2);
+                if (!match) {
+                    if ($(this)[0].scrollWidth > $(this).innerWidth()) {
+                        //Text has over-flown, add before the text (will collide with sCC though
+                        $(this)[0].insertBefore(img,$(this)[0].firstChild);
+                    } else {
+                        // append
+                        var parHeight = $(this)[0].scrollHeight;
+                        if (parHeight >= 25) {
+                            img.height = parHeight - 14;
+                        } else if (parHeight >= 21) {
+                            img.height = parHeight - 9;
+                        } else {
+                            //img.height = "75%";
+                        }
+                        $(this)[0].appendChild(img);
+                    }
+                    //console.log($(this));
+                }
+            }
+        },
+        function () {
+            $("#copybtn").remove();
+        }
+    );
+
+    // table values no header
     $("#outerTable tr td").not(':first').hover(
         function () {
             var list = $(this)[0].classList;
@@ -111,6 +146,14 @@ if (document.readyState === "interactive" ) {
                             $(this)[0].insertBefore(img,$(this)[0].firstChild);
                         } else {
                             // append
+                            var parHeight = $(this)[0].scrollHeight;
+                            if (parHeight >= 25) {
+                                img.height = parHeight - 14;
+                            } else if (parHeight >= 21) {
+                                img.height = parHeight - 9;
+                            } else {
+                                //img.height = "75%";
+                            }
                             $(this)[0].appendChild(img);
                         }
                         //console.log($(this));
