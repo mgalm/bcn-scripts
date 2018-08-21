@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functionon keypress in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     2
+// @version     3
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -19,8 +19,9 @@ if (document.readyState === "interactive" ) {
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
         if (/Addresses/.test(subtab.innerHTML.trim())) {
             addEventA();
+            addEventE();
         }
-    }else {
+    } else {
         var mainTab = document.getElementsByClassName("tab-bar active")[0];
         if (/IP Space/.test(mainTab.innerHTML.trim())) {
             addEventE();
