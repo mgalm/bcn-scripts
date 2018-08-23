@@ -4,7 +4,7 @@
 // @description Add direct buttons for Deploy Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     4
+// @version     5
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -21,7 +21,7 @@ if (document.readyState === "interactive" ) {
             var a = tR1.insertCell(0);
             a.innerHTML = '<td><div class="ToolBarItemSeparator">&nbsp;</div></td>';
 			var b = tR1.insertCell(0);
-			b.innerHTML='<td><a id="link" onclick="ProteusWaitingPage.start();" name="DStatusExtra" class="ToolBarItem" href="/app?component=%24ValueObjectFormTable_14.%24ComboButtonBar.%24ComboButton.direct&page=ConfigurationPage&service=direct&session=T&sp=Spage%3DDeploymentStatus&sp=Spage%3DDeploymentStatus"><img src="/images/icons/small/flash_question.gif" border="0" alt="Deployment Status" title="Deployment Status"></a></td>';
+			b.innerHTML='<td><a id="link_DS" onclick="ProteusWaitingPage.start();" name="DStatusExtra" class="ToolBarItem" href="/app?component=%24ValueObjectFormTable_14.%24ComboButtonBar.%24ComboButton.direct&page=ConfigurationPage&service=direct&session=T&sp=Spage%3DDeploymentStatus&sp=Spage%3DDeploymentStatus"><img src="/images/icons/small/flash_question.gif" border="0" alt="Deployment Status" title="Deployment Status"></a></td>';
 		}
 	}
     var page = document.childNodes[2].nodeValue;
