@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functions on keypress/keydown in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     5
+// @version     6
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -28,15 +28,20 @@ if (document.readyState === "interactive" ) {
         }
     } else {
         // selectively activate the edit button
-        var mainTab = document.getElementsByClassName("tab-bar active")[0];
-        if (/IP Space/.test(mainTab.innerHTML.trim())) {
-            addEventE();
-        } else if (/DNS/.test(mainTab.innerHTML.trim())) {
-            addEventE();
-        } else if (/Devices/.test(mainTab.innerHTML.trim())) {
-            addEventE();
-        } else if (/Groups/.test(mainTab.innerHTML.trim())) {
-            addEventE();
+        var mainTabs = document.getElementsByClassName("tab-bar active");
+        if (mainTabs !== undefined) {
+            var mainTab = mainTabs[0];
+            if (mainTab !== undefined) {
+                if (/IP Space/.test(mainTab.innerHTML.trim())) {
+                    addEventE();
+                } else if (/DNS/.test(mainTab.innerHTML.trim())) {
+                    addEventE();
+                } else if (/Devices/.test(mainTab.innerHTML.trim())) {
+                    addEventE();
+                } else if (/Groups/.test(mainTab.innerHTML.trim())) {
+                    addEventE();
+                }
+            }
         }
     }
     // check for up to Parent link (everywhere)
