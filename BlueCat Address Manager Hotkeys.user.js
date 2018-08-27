@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functions on keypress/keydown in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     6
+// @version     7
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -55,12 +55,12 @@ if (document.readyState === "interactive" ) {
     // next
     var nextPageButton = document.getElementById("linkNextText");
     if (nextPageButton != null && nextPageButton !== undefined) {
-            addEventNext();
+        addEventNext();
     }
     // previous
     var prevPageButton = document.getElementById("linkPrevText");
     if (prevPageButton != null && prevPageButton !== undefined) {
-            addEventPrev();
+        addEventPrev();
     }
 }
 
@@ -74,11 +74,18 @@ function addEventA() {
         var x = e.key;
         // If the pressed keyboard button is "a" or "A" (using caps lock or shift)
         if (x == "a" || x == "A") {
-            //console.log("User pressed 'A' key in 'IPNetwork'");
-            var selected = document.getElementsByClassName("value-table-selected");
-            if (selected.length > 0) {
-                //console.log("call assign on "+selected.length+" addresses");
-                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SAllocateIP4Address' );";
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'A' key in 'IPNetwork'");
+                        var selected = document.getElementsByClassName("value-table-selected");
+                        if (selected.length > 0) {
+                            //console.log("call assign on "+selected.length+" addresses");
+                            window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SAllocateIP4Address' );";
+                        }
+                    }
+                }
             }
         }
     });
@@ -90,10 +97,17 @@ function addEventE() {
         var x = e.key;
         // If the pressed keyboard button is "e" or "E" (using caps lock or shift)
         if (x == "e" || x == "E") {
-            //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
-            var editButton = document.getElementById('direct');
-            var link = editButton.href;
-            window.location = link;
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
+                        var editButton = document.getElementById('direct');
+                        var link = editButton.href;
+                        window.location = link;
+                    }
+                }
+            }
         }
     });
 }
@@ -104,11 +118,18 @@ function addEventD() {
         var x = e.key;
         // If the pressed keyboard button is "d" or "D" (using caps lock or shift)
         if (x == "d" || x == "D") {
-            //console.log("User pressed 'D' key in 'Servers'");
-            var selected = document.getElementsByClassName("value-table-selected");
-            if (selected.length > 0) {
-                //console.log("call assign on "+selected.length+" addresses");
-                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'D' key in 'Servers'");
+                        var selected = document.getElementsByClassName("value-table-selected");
+                        if (selected.length > 0) {
+                            //console.log("call assign on "+selected.length+" addresses");
+                            window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+                        }
+                    }
+                }
             }
         }
     });
@@ -120,10 +141,17 @@ function addEventU() {
         var x = e.key;
         // If the pressed keyboard button is "u" or "U" (using caps lock or shift)
         if (x == "u" || x == "U") {
-            //console.log("User pressed 'D' key in 'Servers'");
-            var selected = document.getElementById("link");
-            if (selected !== undefined) {
-                selected.click();
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'D' key in 'Servers'");
+                        var selected = document.getElementById("link");
+                        if (selected !== undefined) {
+                            selected.click();
+                        }
+                    }
+                }
             }
         }
     });
@@ -136,8 +164,15 @@ function addEventNext() {
         var x = e.keyCode;
         // If the pressed keyboard button is "right arroy"
         if (x == "39") {
-            //console.log("User pressed 'right arrow' key while paging is active;
-            window.location = "javascript:tapestry.form.submit('form', 'linkNextText');";
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'right arrow' key while paging is active;
+                        window.location = "javascript:tapestry.form.submit('form', 'linkNextText');";
+                    }
+                }
+            }
         }
     });
 }
@@ -148,8 +183,15 @@ function addEventPrev() {
         var x = e.keyCode;
         // If the pressed keyboard button is "left arroy"
         if (x == "37") {
-            //console.log("User pressed 'left arrow' key while paging is active;
-            window.location = "javascript:tapestry.form.submit('form', 'linkPrevText');";
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        //console.log("User pressed 'left arrow' key while paging is active;
+                        window.location = "javascript:tapestry.form.submit('form', 'linkPrevText');";
+                    }
+                }
+            }
         }
     });
 }
