@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functions on keypress/keydown in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     8
+// @version     9
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -49,6 +49,54 @@ if (document.readyState === "interactive" ) {
     if (linkButton !== undefined) {
         if (linkButton.name === "SYSTEMUp_to_Parent") {
             addEventU();
+        }
+    }
+    // Tab Hotkeys everywhere
+    var myIpamTab = document.getElementById("changeCategory");
+    if (myIpamTab != null && myIpamTab !== undefined) {
+        // at least MyIPAM is clickable, we're logged in
+        addEventAlt(1,myIpamTab.href);
+        var ipSpaceTab = document.getElementById("changeCategory_0");
+        if (ipSpaceTab != null && ipSpaceTab !== undefined) {
+            // IP Space Tab Link exists
+            // Add Alt+2
+            addEventAlt(2,ipSpaceTab.href);
+        }
+        var dnsTab = document.getElementById("changeCategory_1");
+        if (dnsTab != null && dnsTab !== undefined) {
+            // DNS Tab Link exists
+            // Add Alt+3
+            addEventAlt(3,dnsTab.href);
+        }
+        var devicesTab = document.getElementById("changeCategory_2");
+        if (devicesTab != null && devicesTab !== undefined) {
+            // Devices Tab Link exists
+            // Add Alt+4
+            addEventAlt(4,devicesTab.href);
+        }
+        var tftpTab = document.getElementById("changeCategory_3");
+        if (tftpTab != null && tftpTab !== undefined) {
+            // TFTP Tab Link exists
+            // Add Alt+5
+            addEventAlt(5,tftpTab.href);
+        }
+        var serversTab = document.getElementById("changeCategory_4");
+        if (serversTab != null && serversTab !== undefined) {
+            // Servers Tab Link exists
+            // Add Alt+5
+            addEventAlt(5,serversTab.href);
+        }
+        var groupTab = document.getElementById("changeCategory_5");
+        if (groupTab != null && groupTab !== undefined) {
+            // Group Tab Link exists
+            // Add Alt+6
+            addEventAlt(6,groupTab.href);
+        }
+        var adminTab = document.getElementById("changeCategory_6");
+        if (adminTab != null && adminTab !== undefined) {
+            // Admin Tab Link exists
+            // Add Alt+7
+            addEventAlt(7,adminTab.href);
         }
     }
     // check for Pagination and register left right arrow for navigation
@@ -170,7 +218,7 @@ function addEventU() {
 function addEventNext() {
     document.addEventListener('keydown', function(e) {
         var x = e.keyCode;
-        // If the pressed keyboard button is "right arroy"
+        // If the pressed keyboard button is "right arrow"
         if (x == "39") {
             var el = document.activeElement;
             if (el.type !== "text") {
@@ -191,7 +239,7 @@ function addEventNext() {
 function addEventPrev() {
     document.addEventListener('keydown', function(e) {
         var x = e.keyCode;
-        // If the pressed keyboard button is "left arroy"
+        // If the pressed keyboard button is "left arrow"
         if (x == "37") {
             var el = document.activeElement;
             if (el.type !== "text") {
@@ -205,5 +253,27 @@ function addEventPrev() {
                 }
             }
         }
+    });
+}
+
+// Hotkey for each Alt+Number comination
+function addEventAlt(tabIndex,link) {
+    document.addEventListener('keydown', function(e) {
+            var x = e.key;
+            // If the pressed keyboard button is both alt and a number 1-7
+            if (x == tabIndex && e.altKey) {
+                var el = document.activeElement;
+                if (el.type !== "text") {
+                    if (el.type !== "search") {
+                        if (el.type !== "input") {
+                            if (el.type !== "select-one") {
+                                //console.log(link);
+                                window.location = link;
+                            }
+                        }
+                    }
+                }
+            }
+
     });
 }
