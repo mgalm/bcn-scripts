@@ -3,17 +3,17 @@
 // @namespace   *
 // @description Highlight the respective table row while hovering over it in BlueCat Address Manager
 // @include     */app*
-// @version     1
+// @version     2
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license		MIT
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
-// @require     http://code.jquery.com/jquery-latest.js
+// @require     http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
 
-//jQuery fix
-this.$ = this.jQuery = jQuery.noConflict(true);
+//jQuery fix - is now broken or not necessary any more
+//this.$ = this.jQuery = jQuery.noConflict(true);
 
 $("#outerTable tr").not(':first').hover(
     function () {
