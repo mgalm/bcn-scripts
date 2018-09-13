@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functions on keypress/keydown in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     9
+// @version     10
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -18,6 +18,9 @@ if (document.readyState === "interactive" ) {
         if (/Servers/.test(subtab.innerHTML.trim())) {
             addEventD();
         }
+    } else if (/ Page: ServerPage /.test(page)) {
+        // Deploy with d in Server Page
+        addEventD();
     } else if (/ Page: IP4NetworkPage /.test(page)) {
         // Assign key for ips only in Network Page and Addresses Subtab
         // Edit is fine here too
@@ -179,6 +182,8 @@ function addEventD() {
                             var selected = document.getElementsByClassName("value-table-selected");
                             if (selected.length > 0) {
                                 //console.log("call assign on "+selected.length+" addresses");
+                                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+                            } else if (/ Page: ServerPage /.test(page)) {
                                 window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
                             }
                         }
