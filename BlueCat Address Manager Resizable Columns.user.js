@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Dynamic Column Resizing in BlueCat Address Manager
 // @include     */app*
-// @version     7
+// @version     8
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -42,6 +42,7 @@ function reSize() {
             if(pressed) {
                 $(start).removeClass("resizing");
                 pressed = false;
+                $(start).style.cursor;
             }
         });
     });
@@ -68,3 +69,17 @@ if (document.readyState === "interactive" ) {
             reSize();
     }
 }
+
+// general styling function
+function addGlobalStyle(css) {
+    var head, style;
+    head = document.getElementsByTagName('head')[0];
+    if (!head) { return; }
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = css;
+    head.appendChild(style);
+}
+
+// add resize cursor to table header
+addGlobalStyle("*[id^='header'] { cursor: col-resize; }");
