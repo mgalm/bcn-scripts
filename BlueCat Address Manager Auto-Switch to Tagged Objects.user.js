@@ -41,14 +41,14 @@ if (document.readyState === "interactive" ) {
         if (subtab.innerText === "Tags") {
             var info = document.getElementById("informal");
             if ((info !== undefined)&&(info !== null)) {
-                console.log("found informal table - assuming table view");
+                //console.log("found informal table - assuming table view");
                 // Table View
                 if (document.getElementsByClassName("empty-table").length === 1) {
                     // empty -> switch to tagged objects
                     document.getElementById("contextTabLink_1").click();
                 }
             } else {
-                console.log("informal id not found or null - assuming tree view");
+                //console.log("informal id not found or null - assuming tree view");
                 // checking nodes
                 if (document.getElementsByClassName("TreeNode").length === 0) {
                     getNodes();
