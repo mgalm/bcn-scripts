@@ -5,7 +5,7 @@
 // @include     */app*
 // @exclude     */app*sp=ScontextId%3Dtag
 // @license		MIT
-// @version     3
+// @version     4
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -39,14 +39,22 @@ if (document.readyState === "interactive" ) {
         // check subtab, should only be executed on Tags not Tagged Objects
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
         if (subtab.innerText === "Tags") {
-            // Table View
-            if (document.getElementsByClassName("empty-table").length === 1) {
-                document.getElementById("contextTabLink_1").click();
-                // Tree View
-            } else if (document.getElementsByClassName("TreeNode").length === 0) {
-                getNodes();
-                //console.log(document.getElementsByClassName("TreeNode").length);
-                //document.getElementById("contextTabLink_1").click();
+            var info = document.getElementById("informal");
+            if ((info !== undefined)&&(info !== null)) {
+                console.log("found informal table - assuming table view");
+                // Table View
+                if (document.getElementsByClassName("empty-table").length === 1) {
+                    // empty -> switch to tagged objects
+                    document.getElementById("contextTabLink_1").click();
+                }
+            } else {
+                console.log("informal id not found or null - assuming tree view");
+                // checking nodes
+                if (document.getElementsByClassName("TreeNode").length === 0) {
+                    getNodes();
+                    //console.log(document.getElementsByClassName("TreeNode").length);
+                    //document.getElementById("contextTabLink_1").click();
+                }
             }
         }
     }
