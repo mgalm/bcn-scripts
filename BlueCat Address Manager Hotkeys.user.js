@@ -4,7 +4,7 @@
 // @description Add event listener to the UI to call functions on keypress/keydown in BlueCat Address Manager
 // @include     */app*
 // @license     MIT
-// @version     10
+// @version     11
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -129,12 +129,14 @@ function addEventA() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'A' key in 'IPNetwork'");
-                            var selected = document.getElementsByClassName("value-table-selected");
-                            if (selected.length > 0) {
-                                //console.log("call assign on "+selected.length+" addresses");
-                                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SAllocateIP4Address' );";
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'A' key in 'IPNetwork'");
+                                var selected = document.getElementsByClassName("value-table-selected");
+                                if (selected.length > 0) {
+                                    //console.log("call assign on "+selected.length+" addresses");
+                                    window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SAllocateIP4Address' );";
+                                }
                             }
                         }
                     }
@@ -154,11 +156,13 @@ function addEventE() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
-                            var editButton = document.getElementById('direct');
-                            var link = editButton.href;
-                            window.location = link;
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'E' key in 'Groups' - calling edit function via 'direct' Object Id");
+                                var editButton = document.getElementById('direct');
+                                var link = editButton.href;
+                                window.location = link;
+                            }
                         }
                     }
                 }
@@ -177,14 +181,16 @@ function addEventD() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'D' key in 'Servers'");
-                            var selected = document.getElementsByClassName("value-table-selected");
-                            if (selected.length > 0) {
-                                //console.log("call assign on "+selected.length+" addresses");
-                                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
-                            } else if (/ Page: ServerPage /.test(page)) {
-                                window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'D' key in 'Servers'");
+                                var selected = document.getElementsByClassName("value-table-selected");
+                                if (selected.length > 0) {
+                                    //console.log("call assign on "+selected.length+" addresses");
+                                    window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+                                } else if (/ Page: ServerPage /.test(page)) {
+                                    window.location = "javascript:remoteSubmitLink( document.getElementById( 'form' ), 'SDeploy' );";
+                                }
                             }
                         }
                     }
@@ -204,11 +210,13 @@ function addEventU() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'D' key in 'Servers'");
-                            var selected = document.getElementById("link");
-                            if (selected !== undefined) {
-                                selected.click();
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'D' key in 'Servers'");
+                                var selected = document.getElementById("link");
+                                if (selected !== undefined) {
+                                    selected.click();
+                                }
                             }
                         }
                     }
@@ -229,9 +237,11 @@ function addEventNext() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'right arrow' key while paging is active;
-                            window.location = "javascript:tapestry.form.submit('form', 'linkNextText');";
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'right arrow' key while paging is active;
+                                window.location = "javascript:tapestry.form.submit('form', 'linkNextText');";
+                            }
                         }
                     }
                 }
@@ -250,9 +260,11 @@ function addEventPrev() {
             if (el.type !== "text") {
                 if (el.type !== "search") {
                     if (el.type !== "input") {
-                        if (el.type !== "select-one") {
-                            //console.log("User pressed 'left arrow' key while paging is active;
-                            window.location = "javascript:tapestry.form.submit('form', 'linkPrevText');";
+                        if (el.type !== "password"){
+                            if (el.type !== "select-one") {
+                                //console.log("User pressed 'left arrow' key while paging is active;
+                                window.location = "javascript:tapestry.form.submit('form', 'linkPrevText');";
+                            }
                         }
                     }
                 }
@@ -264,13 +276,14 @@ function addEventPrev() {
 // Hotkey for each Alt+Number comination
 function addEventAlt(tabIndex,link) {
     document.addEventListener('keydown', function(e) {
-            var x = e.key;
-            // If the pressed keyboard button is both alt and a number 1-7
-            if (x == tabIndex && e.altKey) {
-                var el = document.activeElement;
-                if (el.type !== "text") {
-                    if (el.type !== "search") {
-                        if (el.type !== "input") {
+        var x = e.key;
+        // If the pressed keyboard button is both alt and a number 1-7
+        if (x == tabIndex && e.altKey) {
+            var el = document.activeElement;
+            if (el.type !== "text") {
+                if (el.type !== "search") {
+                    if (el.type !== "input") {
+                        if (el.type !== "password"){
                             if (el.type !== "select-one") {
                                 //console.log(link);
                                 window.location = link;
@@ -279,6 +292,7 @@ function addEventAlt(tabIndex,link) {
                     }
                 }
             }
+        }
 
     });
 }
