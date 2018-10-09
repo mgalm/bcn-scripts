@@ -4,7 +4,7 @@
 // @description Add count of value Table in BlueCat Address Manager (no paging support)
 // @include     */app*
 // @license		MIT
-// @version     1
+// @version     2
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -42,13 +42,14 @@ if (document.readyState === "interactive" ) {
                 if (outertable.getElementsByClassName("empty-table").length !== 1) {
                     var count = outertable.rows.length - 1;
                     var tBody = dialogBars[0].getElementsByTagName('tbody')[0];
-                    console.log(tBody);
                     var tR = tBody.getElementsByTagName('tr')[0];
-                    console.log(tR);
-                    var w = tR.insertCell(1);
-                    w.innerHTML='<div class="separator"></div>';
-                    var x = tR.insertCell(2);
-                    x.innerHTML='<span class="label">Count: '+count+'</span>';
+                    var tD = tR.getElementsByTagName('td')[0];
+                    var span = tR.getElementsByTagName('span')[0];
+                    var node = document.createElement("span");
+                    node.innerHTML='<span class="label">&nbsp;&nbsp;&nbsp;&nbsp;<i>Count: '+count+'</i></span>';
+                    span.appendChild(node);
+                    //var x = tR.insertCell(2);
+                    //x.innerHTML='<span class="label">Count: '+count+'</span>';
                 }
             }
         } else {
@@ -62,11 +63,11 @@ if (document.readyState === "interactive" ) {
                     var name = namepart[0];
                     var outertable;
                     if (part === undefined) {
-                        console.log("iterating through first "+name);
+                        //console.log("iterating through first "+name);
                         outertable = document.getElementById("outerTable");
                     } else {
                         part = "_"+part;
-                        console.log("iterating "+name+" with part "+part);
+                        //console.log("iterating "+name+" with part "+part);
                         outertable = document.getElementById("outerTable"+part);
                     }
                     if (outertable.getElementsByClassName("empty-table").length !== 1) {
@@ -76,7 +77,7 @@ if (document.readyState === "interactive" ) {
                         var w = tR.insertCell(-1);
                         w.innerHTML='<div class="separator"></div>';
                         var x = tR.insertCell(-1);
-                        x.innerHTML='<span class="label">Count: '+count+'</span>';
+                        x.innerHTML='<span class="label"><i>Count: '+count+'</i></span>';
                     }
                 }
             }
