@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name        BlueCat Address Manager Fixed Header
+// @name        BlueCat Address Manager toTop Button and Fixed Header
 // @namespace   *
-// @description Still experimental - Fixed Header for certain tables in BlueCat Address Manager
+// @description Add a "Go to Top" button and fix Header (Still experimental for certain tables) in BlueCat Address Manager
 // @include     */app*
 // @require     http://code.jquery.com/jquery-latest.js
-// @version     5
+// @version     6
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license     MIT
@@ -12,6 +12,7 @@
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
 // ==/UserScript==
 if (document.readyState === "interactive" ) {
+    addTopButton();
     var pageElements = document.childNodes;
     if (pageElements !== null) {
         var pageElement = pageElements[2];
@@ -40,10 +41,25 @@ if (document.readyState === "interactive" ) {
 }
 
 function fixHeader() {
-    console.log("create sticky css stylings")
-    var css = '.banner-sticky { top:0px; position:sticky; position: -webkit-sticky; } .navigation-sticky { top:59px; position:sticky; position: -webkit-sticky; } .location-sticky { top:84px; position:sticky; position: -webkit-sticky; } .TabbedEntityPagePanel-sticky { top:102px; position:sticky; position: -webkit-sticky; }  .context-sticky { top:164px; position:sticky; position: -webkit-sticky; } .dialog-sticky { top:191px; position:sticky; position: -webkit-sticky; } .list-header-sticky { position: relative; position:sticky; position: -webkit-sticky; } .topToolBar-sticky { position: sticky; position: element(#informal); } ',
-        head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style');
+    console.log("create sticky css stylings");
+    var css = '.banner-sticky { top:0px; position:sticky; position: -webkit-sticky; } \
+        .navigation-sticky { top:59px; position:sticky; position: -webkit-sticky; } \
+        .location-sticky { top:84px; position:sticky; position: -webkit-sticky; } \
+        .TabbedEntityPagePanel-sticky { top:102px; position:sticky; position: -webkit-sticky; } \
+        .context-sticky { top:164px; position:sticky; position: -webkit-sticky; } \
+        .dialog-sticky { top:191px; position:sticky; position: -webkit-sticky; }';
+        //.list-header-sticky { position: relative; position:sticky; position: -webkit-sticky; } \
+        //.topToolBar-sticky { position: sticky; position: element(#informal); } ',
+//     var css = '.banner-sticky { top:0px; position:sticky; position: -webkit-sticky; } \
+//                .navigation-sticky { top:59px; position:sticky; position: -webkit-sticky; } \
+//                .location-sticky { top:84px; position:sticky; position: -webkit-sticky; } \
+//                .TabbedEntityPagePanel-sticky { top:102px; position:sticky; position: -webkit-sticky; }  \
+//                .context-sticky { top:164px; position:sticky; position: -webkit-sticky; } \
+//                .dialog-sticky { top:191px; position:sticky; position: -webkit-sticky; } \
+//                .topToolBar-sticky { position:sticky; top(253px); } \
+//                .list-header-sticky { position:fixed; transform: translateY(261px); }',
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var style = document.createElement('style');
     style.type = 'text/css';
     if (style.styleSheet){
         style.styleSheet.cssText = css;
@@ -52,7 +68,7 @@ function fixHeader() {
     }
     console.log("add new css stylings to head element")
     head.appendChild(style);
-    console.log("add sticky classes to elements")
+    //console.log("add sticky classes to elements")
     // now add the classes that are styled to the elements
     $("#banner").addClass("banner-sticky");
     $(".navigation-bar").addClass("navigation-sticky");
@@ -64,53 +80,38 @@ function fixHeader() {
     //$(".list-header").addClass("list-header-sticky");
 };
 
-// function fixHeader() {
-//     var css = '.navigation-fixed { width:100%; top:-5px; left:0; position:fixed; margin:0; } .location-fixed { width:100%; top:18px; left:0; position:fixed; } .TabbedEntityPagePanel-fixed { width:100%; top:43px; left:0; position:fixed; margin:0; }  .context-fixed { width:100%; top:105px; left:0; position:fixed; } .dialog-fixed { width:100%; top:132px; left:0; position:fixed; } .topToolBar-fixed { width:100%; top:153px; left:0; position:fixed; }  .list-header-fixed { width:100%; top:131px; position:fixed; }',
-//         head = document.head || document.getElementsByTagName('head')[0],
-//         style = document.createElement('style');
 
-//     style.type = 'text/css';
-//     if (style.styleSheet){
-//         style.styleSheet.cssText = css;
-//     } else {
-//         style.appendChild(document.createTextNode(css));
-//     }
+function addTopButton() {
+    var button = document.createElement("button");
+    button.innerHTML="Top";
+    button.id="topBtn";
+    button.title="Go to top";
+    var body = document.getElementsByTagName("body")[0];
+    body.appendChild(button);
+    button.addEventListener ("click", function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+    var btncss = '#topBtn {display: none; position: fixed; width: 60px; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #8CB7D1; color: white; cursor: pointer; padding: 15px; border-radius: 10px; font-size: 18px; } #topBtn:hover { background-color: #555; }';
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    if (style.styleSheet){
+        style.styleSheet.cssText = btncss;
+    } else {
+        style.appendChild(document.createTextNode(btncss));
+    }
+    console.log("add new btncss stylings to head element")
+    head.appendChild(style);
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+}
 
-//     head.appendChild(style);
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("topBtn").style.display = "block";
+    } else {
+        document.getElementById("topBtn").style.display = "none";
+    }
+}
 
-//     $(window).scroll(function () {
-//         if ($(window).scrollTop() > 230) {
-//             $(".navigation-bar").addClass("navigation-fixed");
-//             $(".location-bar").addClass("location-fixed");
-//             $("#labelContainer").addClass("TabbedEntityPagePanel-fixed");
-//             $(".ContextPaneSwitcher").addClass("context-fixed");
-//             $(".dialog-hd").addClass("dialog-fixed");
-//             $(".value-table-topToolBar").addClass("topToolBar-fixed");
-//             //movePageMenu(document.getElementById('pageMenu-menu'));
-//             //movePageMenu(document.getElementById('ComboButton_2-menu'));
-//         } else {
-//             $(".navigation-bar").removeClass("navigation-fixed");
-//             $(".location-bar").removeClass("location-fixed");
-//             $("#labelContainer").removeClass("TabbedEntityPagePanel-fixed");
-//             $(".ContextPaneSwitcher").removeClass("context-fixed");
-//             $(".dialog-hd").removeClass("dialog-fixed");
-//             $(".value-table-topToolBar").removeClass("topToolBar-fixed");
-//             //movePageMenu(document.getElementById('pageMenu-menu'));
-//             //movePageMenu(document.getElementById('ComboButton_2-menu'));
-//         }
-//     });
-// }
-
-// function movePageMenu(el) {
-//     var menu = el;
-//     var left = menu.style.left;
-//     var top = menu.style.top;
-//     console.log('before left: '+left+' top: '+top);
-//     var labelContainer = document.getElementById('labelContainer');
-//     var rect = labelContainer.getBoundingClientRect();
-//     console.log(rect);
-//     var newtop = rect.y;// + rect.height;
-//     menu.style.y = newtop;
-//     top = menu.style.top;
-//     console.log('after left: '+left+' top: '+top);
-// }
