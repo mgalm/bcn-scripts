@@ -4,7 +4,7 @@
 // @description Add a "Go to Top" button and fix Header (Still experimental for certain tables) in BlueCat Address Manager
 // @include     */app*
 // @require     http://code.jquery.com/jquery-latest.js
-// @version     6
+// @version     7
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license     MIT
