@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        BlueCat Address Manager toTop Button and Fixed Header
+// @name        BlueCat Address Manager Fixed Header
 // @namespace   *
 // @description Add a "Go to Top" button and fix Header (Still experimental for certain tables) in BlueCat Address Manager
 // @include     */app*
