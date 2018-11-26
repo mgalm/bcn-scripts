@@ -4,7 +4,7 @@
 // @description Add direct buttons for Server Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     8
+// @version     9
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -173,6 +173,24 @@ if (document.readyState === "interactive" ) {
                             var z = tr.insertCell(-1);
                             var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                             z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
+                        } else if (profile.startsWith("Managed Windows Server")||profile.startsWith("BlueCat Address Manager for Windows Server")) {
+                            // get Server ID from link
+                            var link = namecell.getElementsByTagName("a")[0].href;
+                            var rest = link.split("SingleServer%3A")[1];
+                            var server_id = rest.split("%")[0];
+                            // add links with icons to namecell
+                            var td = namecell.getElementsByTagName("a")[0].parentNode;
+                            var tr = td.parentNode;
+                            // console.log(" + Adding Buttons")
+                            // edit button
+                            var x = tr.insertCell(-1);
+                            var editlink = editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
+                            // more room between the name and the buttons
+                            x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
+                            // view logs button
+                            var y = tr.insertCell(-1);
+                            var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
+                            y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                         }
                     }
                 }
@@ -271,6 +289,24 @@ if (document.readyState === "interactive" ) {
                                 var z = tr.insertCell(-1);
                                 var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                                 z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
+                            } else if (profile.startsWith("Managed Windows Server")||profile.startsWith("BlueCat Address Manager for Windows Server")) {
+                                // get Server ID from link
+                                var link = namecell.getElementsByTagName("a")[0].href;
+                                var rest = link.split("SingleServer%3A")[1];
+                                var server_id = rest.split("%")[0];
+                                // add links with icons to namecell
+                                var td = namecell.getElementsByTagName("a")[0].parentNode;
+                                var tr = td.parentNode;
+                                // console.log(" + Adding Buttons")
+                                // edit button
+                                var x = tr.insertCell(-1);
+                                var editlink = editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
+                                // more room between the name and the buttons
+                                x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
+                                // view logs button
+                                var y = tr.insertCell(-1);
+                                var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
+                                y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                             }
                         }
                     }
