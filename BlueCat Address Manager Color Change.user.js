@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Change the color of the UI in BlueCat Address Manager
 // @include     */app*
-// @version     2
+// @version     3
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license     MIT
@@ -24,38 +24,27 @@ var greenHost = "bam-02";
 
 if (document.readyState === "interactive" ) {
     if (window.location.hostname == redHost) {
-        toRed();
+        //red
+        rotateTo("165");
     } else if (window.location.hostname == greenHost) {
-        toGreen();
+        //green
+        rotateTo("-85");
     }
 }
 
-function toRed() {
-	var rotation= "165";
+function rotateTo(value) {
+    var rotation=value;
     var links = document.getElementsByTagName("link");
     var linksList = Array.prototype.slice.call(links);
     linksList.forEach(function(link) {
         if (link.href.includes("/cached-style/proteus-silver.css")) {
             var sheet = link.sheet;
             var rule = ".tab-bar { filter: hue-rotate("+rotation+"deg)}";
-            var rule2 = "#banner { filter: hue-rotate("+rotation+"deg)}";
+            var rule2 = "#banner { position: sticky; top: -3px; filter: hue-rotate("+rotation+"deg)}";
+            var rule3 = ".navigation-bar { position: sticky; top: 54px;}";
             sheet.insertRule(rule,0);
             sheet.insertRule(rule2,0);
-        }
-    });
-};
-
-function toGreen() {
-	var rotation= "-85";
-    var links = document.getElementsByTagName("link");
-    var linksList = Array.prototype.slice.call(links);
-    linksList.forEach(function(link) {
-        if (link.href.includes("/cached-style/proteus-silver.css")) {
-            var sheet = link.sheet;
-            var rule = ".tab-bar { filter: hue-rotate("+rotation+"deg)}";
-            var rule2 = "#banner { filter: hue-rotate("+rotation+"deg)}";
-            sheet.insertRule(rule,0);
-            sheet.insertRule(rule2,0);
+            sheet.insertRule(rule3,0);
         }
     });
 };
