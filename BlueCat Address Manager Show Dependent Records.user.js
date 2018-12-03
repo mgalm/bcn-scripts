@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Show dependent record for IP - Host Records in BlueCat Address Manager
 // @include     */app*
-// @version     1
+// @version     2
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -12,14 +12,24 @@
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-50x50.png
 // ==/UserScript==
 
-
+var added = false;
 if (document.readyState === "interactive" ) {
     var page = document.childNodes[2].nodeValue;
     if (/ Page: IP4AddressPage /.test(page)) {
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
         if (/Details/.test(subtab.innerHTML.trim())) {
-            if (document.getElementById("outerTable").getElementsByClassName("empty-table").length !== 1) {
-                addButton();
+            var outertable = document.getElementById("outerTable");
+            if (outertable != null) {
+                if (outertable.getElementsByClassName("empty-table").length !== 1) {
+                    Array.prototype.slice.call(outertable.getElementsByTagName("a")).forEach( function(obj) {
+                        if ((obj.offsetParent.className == "skinImage")&&(added==false)) {
+                            if (obj.href.includes("HostRecord")) {
+                                addButton();
+                                added=true;
+                            }
+                        }
+                    });
+                }
             }
         }
     }
