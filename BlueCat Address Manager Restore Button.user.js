@@ -32,7 +32,7 @@ function addButton() {
                 if (element.innerText.trim() == "Transaction Number:") {
                     var num = parseInt(element.id.split("_")[1])+1;
                     var idVar = document.getElementById("Any_"+num).innerHTML.trim();
-                    document.getElementById("Any_15").innerHTML = idVar+'<p><a id="undeleteLink" name="undelete_hist_History:'+idVar+':0" href="/app?component=undeleteLink&amp;page=UndeleteListPage&amp;service=direct&amp;session=T&amp;sp=SformMode%3Dedit&amp;sp=StableClass%3Dcom.bluecatnetworks.proteus.data.History&amp;sp=StablePageName%3DUndeleteListPage&amp;sp=StableId%3DuserUndeleteList&amp;sp=Spage%3DUndeleteListPage&amp;sp=SextraOptionalValue%3DundeleteType%7Cnull%3BpageBeforeList%7Cnull&amp;sp=Suserspecific%3Dtrue&amp;sp=ShistoryId%3DHistory%3A'+idVar+'%3A0"><img src="/images/icons/small/undelete.gif" border="0"></a></p>';
+                    document.getElementById("Any_"+num).innerHTML = idVar+'<p><a id="undeleteLink" name="undelete_hist_History:'+idVar+':0" href="/app?component=undeleteLink&amp;page=UndeleteListPage&amp;service=direct&amp;session=T&amp;sp=SformMode%3Dedit&amp;sp=StableClass%3Dcom.bluecatnetworks.proteus.data.History&amp;sp=StablePageName%3DUndeleteListPage&amp;sp=StableId%3DuserUndeleteList&amp;sp=Spage%3DUndeleteListPage&amp;sp=SextraOptionalValue%3DundeleteType%7Cnull%3BpageBeforeList%7Cnull&amp;sp=Suserspecific%3Dtrue&amp;sp=ShistoryId%3DHistory%3A'+idVar+'%3A0"><img src="/images/icons/small/undelete.gif" border="0"></a></p>';
                 }
             });
         }
