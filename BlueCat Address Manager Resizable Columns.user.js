@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Dynamic Column Resizing in BlueCat Address Manager
 // @include     */app*
-// @version     8
+// @version     9
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
@@ -68,6 +68,15 @@ if (document.readyState === "interactive" ) {
         default:
             reSize();
     }
+    var links = document.getElementsByTagName("link");
+    var linksList = Array.prototype.slice.call(links);
+    linksList.forEach(function(link) {
+        if (link.href.includes("/cached-style/proteus-silver.css")) {
+            var sheet = link.sheet;
+            var rule = "table.value-table { table-layout: auto; }";
+            sheet.insertRule(rule,0);
+        }
+    });
 }
 
 // general styling function

@@ -12,7 +12,6 @@
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-50x50.png
 // ==/UserScript==
 
-var added = false;
 if (document.readyState === "interactive" ) {
     var page = document.childNodes[2].nodeValue;
     if (/ Page: IP4AddressPage /.test(page)) {
@@ -21,6 +20,7 @@ if (document.readyState === "interactive" ) {
             var outertable = document.getElementById("outerTable");
             if (outertable != null) {
                 if (outertable.getElementsByClassName("empty-table").length !== 1) {
+					var added = false;
                     Array.prototype.slice.call(outertable.getElementsByTagName("a")).forEach( function(obj) {
                         if ((obj.offsetParent.className == "skinImage")&&(added==false)) {
                             if (obj.href.includes("HostRecord")) {
