@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Add a "Go to Top" button in BlueCat Address Manager
 // @include     */app*
-// @version     1
+// @version     2
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
 // @license     MIT
