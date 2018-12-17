@@ -26,7 +26,7 @@ function addTopButton() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
-    var btncss = '#topBtn {display: none; position: fixed; width: 60px; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #8CB7D1; color: white; cursor: pointer; padding: 15px; border-radius: 10px; font-size: 18px; } #topBtn:hover { background-color: #555; }';
+    var btncss = '#topBtn {display: none; box-shadow: 1px 1px #888888; position: fixed; width: 60px; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #8CB7D1; color: white; cursor: pointer; padding: 15px; border-radius: 10px; font-size: 18px; } #topBtn:hover { background-color: #555; }';
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
     style.type = 'text/css';
