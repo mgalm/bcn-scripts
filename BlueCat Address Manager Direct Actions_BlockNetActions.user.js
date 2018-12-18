@@ -4,12 +4,24 @@
 // @description Add direct buttons for Block and Network Actions in BlueCat Address Manager
 // @include     */app*
 // @license		MIT
-// @version     1
+// @version     2
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
+// @require     http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
+
+
+$("#outerTable tr").not(':first').hover(
+    function () {
+        $(this).find(".newbutton").show();
+    },
+    function () {
+        $(this).find(".newbutton").hide();
+    }
+);
+
 
 if (document.readyState === "interactive" ) {
     var page = document.childNodes[2].nodeValue;
@@ -56,33 +68,39 @@ function addButtons() {
             var tr = td.parentNode;
             // ---- edit
             var w = tr.insertCell(-1);
+            w.classList.toggle("newbutton");
             var wIcon = "/images/icons/small/document_edit.gif";
             var editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page="+type+"Page&service=direct&session=T&sp=Spage%3DIP4RangedAddEdit&sp=Svalue%3D"+type+"%3A"+net_id+"%3A43&sp=SformMode%3Dedit";
-            w.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit" src="'+wIcon+'" border="0"></a></td>';
+            w.innerHTML='<td class="newbutton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit" src="'+wIcon+'" border="0"></a></td>';
             // ---- resize
             var x = tr.insertCell(-1);
+            x.classList.toggle("newbutton");
             var xIcon = "/images/icons/small/element_selection.gif";
             var resizelink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page="+type+"Page&service=direct&session=T&sp=Spage%3DIP4RangedResize&sp=Svalue%3D"+type+"%3A"+net_id+"%3A43";
-            x.innerHTML='<td><a href="'+resizelink+'"><img title="Resize" src="'+xIcon+'" border="0"></a></td>';
+            x.innerHTML='<td class="newbutton"><a href="'+resizelink+'"><img title="Resize" src="'+xIcon+'" border="0"></a></td>';
             // ---- split
             var y = tr.insertCell(-1);
+            y.classList.toggle("newbutton");
             var yIcon = "/images/icons/small/elements2.gif";
             var splitlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page="+type+"Page&service=direct&session=T&sp=Spage%3DIP4RangedSplit&sp=Svalue%3D"+type+"%3A"+net_id+"%3A43";
-            y.innerHTML='<td><a href="'+splitlink+'"><img title="Split" src="'+yIcon+'" border="0"></a></td>';
+            y.innerHTML='<td class="newbutton"><a href="'+splitlink+'"><img title="Split" src="'+yIcon+'" border="0"></a></td>';
             // ---- move
             var z = tr.insertCell(-1);
+            z.classList.toggle("newbutton");
             var zIcon = "/images/icons/small/element_next.gif";
             var movelink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page="+type+"Page&service=direct&session=T&sp=Spage%3DIP4RangedMove&sp=Svalue%3D"+type+"%3A"+net_id+"%3A43";
-            z.innerHTML='<td><a href="'+movelink+'"><img title="Move" src="'+zIcon+'" border="0"></a></td>';
+            z.innerHTML='<a href="'+movelink+'"><img title="Move" src="'+zIcon+'" border="0"></a>';
             if (isNet) {
                 // could be share or assign template, would need to check first if something exists there
             } else {
                 // Add create paritions to block only
                 var p = tr.insertCell(-1);
+                p.classList.toggle("newbutton");
                 var pIcon = "/images/icons/small/elements_selection.gif";
                 var partlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page="+type+"Page&service=direct&session=T&sp=Spage%3DIP4BlockPartitionPage&sp=Svalue%3D"+type+"%3A"+net_id+"%3A52";
-                p.innerHTML='<td><a href="'+partlink+'"><img title="Create Partitions" src="'+pIcon+'" border="0"></a></td>';
+                p.innerHTML='<td class="newbutton"><a href="'+partlink+'"><img title="Create Partitions" src="'+pIcon+'" border="0"></a></td>';
             }
+            $(".newbutton").hide();
         }
     }
 };
