@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Dynamic Column Resizing in BlueCat Address Manager
 // @include     */app*
-// @version     9
+// @version     10
 // @grant       none
 // @author      Marius Galm
 // @copyright   2018, Marius Galm
