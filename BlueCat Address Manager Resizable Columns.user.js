@@ -68,15 +68,15 @@ if (document.readyState === "interactive" ) {
         default:
             reSize();
     }
-    var links = document.getElementsByTagName("link");
-    var linksList = Array.prototype.slice.call(links);
-    linksList.forEach(function(link) {
-        if (link.href.includes("/cached-style/proteus-silver.css")) {
-            var sheet = link.sheet;
-            var rule = "table.value-table { table-layout: auto; }";
-            sheet.insertRule(rule,0);
-        }
-    });
+    // var links = document.getElementsByTagName("link");
+    // var linksList = Array.prototype.slice.call(links);
+    // linksList.forEach(function(link) {
+        // if (link.href.includes("/cached-style/proteus-silver.css")) {
+            // var sheet = link.sheet;
+            // var rule = "table.value-table { table-layout: auto; }";
+            // sheet.insertRule(rule,0);
+        // }
+    // });
 }
 
 // general styling function
