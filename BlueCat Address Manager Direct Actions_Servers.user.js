@@ -11,6 +11,17 @@
 // @icon        https://www.bluecatnetworks.com/wp-content/uploads/2018/03/cropped-bluecat-favicon-32x32.png
 // ==/UserScript==
 
+
+$("#outerTable tr").not(':first').hover(
+    function () {
+        $(this).find(".newbutton").show();
+    },
+    function () {
+        $(this).find(".newbutton").hide();
+    }
+);
+
+
 function isNodeList(nodes) {
     var stringRepr = Object.prototype.toString.call(nodes);
 
@@ -53,6 +64,7 @@ function getServers() {
                 // console.log(" + Adding Buttons")
                 // edit button
                 var x = tr.insertCell(-1);
+                x.classList.toggle("newbutton");
                 var editlink = "";
                 if (isCluster) {
                     // special Link for clusters (why? no idea -> the other link let's you set the hostname :-D )
@@ -64,10 +76,12 @@ function getServers() {
                 x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                 // view logs button
                 var y = tr.insertCell(-1);
+                y.classList.toggle("newbutton");
                 var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                 y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                 // service config button
                 var z = tr.insertCell(-1);
+                z.classList.toggle("newbutton");
                 var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                 z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
             }
@@ -85,6 +99,7 @@ if (document.readyState === "interactive" ) {
         var index;
         // loop or something
         getServers();
+        $(".newbutton").hide();
     } else if (/ Page: ServerGroupPage /.test(page)) {
         // go through the h
         var outertable = document.getElementById("outerTable");
@@ -156,6 +171,7 @@ if (document.readyState === "interactive" ) {
                             // console.log(" + Adding Buttons")
                             // edit button
                             var x = tr.insertCell(-1);
+                            x.classList.toggle("newbutton");
                             var editlink = "";
                             if (isCluster) {
                                 // special Link for clusters (why? no idea -> the other link let's you set the hostname :-D )
@@ -167,10 +183,12 @@ if (document.readyState === "interactive" ) {
                             x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                             // view logs button
                             var y = tr.insertCell(-1);
+                            y.classList.toggle("newbutton");
                             var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                             y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                             // service config button
                             var z = tr.insertCell(-1);
+                            z.classList.toggle("newbutton");
                             var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                             z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
                         } else if (profile.startsWith("Managed Windows Server")||profile.startsWith("BlueCat Address Manager for Windows Server")) {
@@ -184,11 +202,13 @@ if (document.readyState === "interactive" ) {
                             // console.log(" + Adding Buttons")
                             // edit button
                             var x = tr.insertCell(-1);
+                            x.classList.toggle("newbutton");
                             var editlink = editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
                             // more room between the name and the buttons
                             x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                             // view logs button
                             var y = tr.insertCell(-1);
+                            y.classList.toggle("newbutton");
                             var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                             y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                         }
@@ -198,6 +218,7 @@ if (document.readyState === "interactive" ) {
             //console.log(header);
 
         }
+        $(".newbutton").hide();
 
     } else if (/ Page: ConfigurationPage /.test(page)) {
         var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
@@ -272,6 +293,7 @@ if (document.readyState === "interactive" ) {
                                 // console.log(" + Adding Buttons")
                                 // edit button
                                 var x = tr.insertCell(-1);
+                                x.classList.toggle("newbutton");
                                 var editlink = "";
                                 if (isCluster) {
                                     // special Link for clusters (why? no idea -> the other link let's you set the hostname :-D )
@@ -283,10 +305,12 @@ if (document.readyState === "interactive" ) {
                                 x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                                 // view logs button
                                 var y = tr.insertCell(-1);
+                                y.classList.toggle("newbutton");
                                 var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                                 y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                                 // service config button
                                 var z = tr.insertCell(-1);
+                                z.classList.toggle("newbutton");
                                 var conflink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DServerServiceConfigure&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                                 z.innerHTML='<td><a href="'+conflink+'"><img title="Service Configuration"  src="/images/icons/small/server_configuration.gif" border="0"></a></td>';
                             } else if (profile.startsWith("Managed Windows Server")||profile.startsWith("BlueCat Address Manager for Windows Server")) {
@@ -300,11 +324,13 @@ if (document.readyState === "interactive" ) {
                                 // console.log(" + Adding Buttons")
                                 // edit button
                                 var x = tr.insertCell(-1);
+                                x.classList.toggle("newbutton");
                                 var editlink = editlink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DAddEditServer&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18&sp=ScontextId%3Ddetails&sp=SformMode%3Dedit";
                                 // more room between the name and the buttons
                                 x.innerHTML='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+editlink+'"><img title="Edit Server Settings" src="/images/icons/small/document_edit.gif" border="0"></a></td>';
                                 // view logs button
                                 var y = tr.insertCell(-1);
+                                y.classList.toggle("newbutton");
                                 var loglink = "/app?component=%24TabbedEntityContainer.%24PagePanel.pageMenu.direct&page=ServerPage&service=direct&session=T&sp=Spage%3DViewLogs&sp=Svalue%3DSingleServer%3A"+server_id+"%3A18"
                                 y.innerHTML='<td><a href="'+loglink+'"><img title="View Server Logs" src="/images/icons/small/server_view.gif" border="0"></a></td>';
                             }
@@ -313,7 +339,7 @@ if (document.readyState === "interactive" ) {
                 }
                 //console.log(header);
             }
-
+            $(".newbutton").hide();
         }
     }
 }
