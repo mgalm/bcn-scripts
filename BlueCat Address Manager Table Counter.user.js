@@ -4,7 +4,7 @@
 // @description Add count of value Table in BlueCat Address Manager (no paging support)
 // @include     */app*
 // @license		MIT
-// @version     4
+// @version     5
 // @grant       none
 // @copyright   2018, Marius Galm
 // @license		MIT
@@ -13,10 +13,12 @@
 
 if (document.readyState === "interactive" ) {
 	var subtab = document.getElementsByClassName("TabPanelLabelActive")[0];
-	if (/Details/.test(subtab.innerHTML.trim())) {
-		// skip Details Section because counting it broken there a.t.m.
-	} else {
-		countTables();
+	if (subtab !== undefined) {
+		if (/Details/.test(subtab.innerHTML.trim())) {
+			// skip Details Section because counting it broken there a.t.m.
+		} else {
+			countTables();
+		}
 	}
 }
 
