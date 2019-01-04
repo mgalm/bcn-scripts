@@ -3,7 +3,7 @@
 // @namespace   *
 // @description Generate Links from Text in table cells in BlueCat Address Manager
 // @include     */app*
-// @version     2
+// @version     3
 // @grant       none
 // @author      Marius Galm
 // @copyright   2019, Marius Galm
@@ -13,7 +13,7 @@
 // @require     https://raw.githubusercontent.com/alexcorvi/anchorme.js/gh-pages/dist-browser/anchorme.min.js
 // ==/UserScript==
 
-var pattern = /(https?:\/\/|ftps?:\/\/)?([a-z0-9%\-]+\.){1,}([a-z0-9\-]+)?(:(\d{1,5}))?(\/([a-z0-9\-._~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)?)?/ig;
+var pattern = /^(https?:\/\/|ftps?:\/\/)?([a-z0-9%\-]+\.){1,}([a-z0-9\-]+)?(:(\d{1,5}))?(\/([a-z0-9\-._~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)?)?$/ig;
 if (document.readyState === "interactive" ) {
 	$("#outerTable tr td").not(':first').hover(
 		function () {
