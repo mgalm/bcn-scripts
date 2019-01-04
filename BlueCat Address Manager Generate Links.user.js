@@ -13,7 +13,7 @@
 // @require     https://raw.githubusercontent.com/alexcorvi/anchorme.js/gh-pages/dist-browser/anchorme.min.js
 // ==/UserScript==
 
-var pattern = /^(https?:\/\/|ftps?:\/\/)?([a-z0-9%\-]+\.){1,}([a-z0-9\-]+)?(:(\d{1,5}))?(\/([a-z0-9\-._~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)?)?$/ig;
+var pattern = /^(https?:\/\/|ftps?:\/\/)?([a-z0-9%\-]+\.){1,}([a-z0-9\-]+)?(:(\d{1,5}))?(\/([a-z0-9\-._~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)?)?$/i;
 if (document.readyState === "interactive" ) {
 	$("#outerTable tr td").not(':first').hover(
 		function () {
