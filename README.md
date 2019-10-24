@@ -1,6 +1,17 @@
 # bcn-scripts
 BlueCat Usersscripts
 
+Update: Addon
+===============
+
+To not let this get out of hand I decide to move the scripts into a browser Addon which let's you select the scripts you want to have runnning.
+Feel free to check this out instead, I don't know how activate the scripts here will be worked on and updated in the future.
+
+* <a href="https://addons.mozilla.org/firefox/addon/bluecat-enhancement-suite/">Firefox-Addon</a>
+* <a href="https://chrome.google.com/webstore/detail/bluecat-enhancement-suite/kmdojjlcckelhlndimpopmonleajgpae">Chrome-Addon</a>
+
+---
+
 Getting started
 ===============
 
